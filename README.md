@@ -43,6 +43,14 @@ This module contains functions for performing various operations on arrays such 
 - `isFound(arr, element)`: Check if an element is found in the array.
 - `checkEveryEle(arr, element)`: Check if every element in the array matches the specified element.
 
+#### Sorting
+
+- `bubbleSort(arr)`: Sort the array using bubble sort
+- `arrMethodSort(arr)`: Sort the array using in-built method. 
+- `findAndReturnMany(arr, element)`: Find and return all occurrences of an element in the array.
+- `isFound(arr, element)`: Check if an element is found in the array.
+- `checkEveryEle(arr, element)`: Check if every element in the array matches the specified element.
+
 ## Usage
 
 To use these functions, require the modules and call the desired functions in the file `index.js` with the appropriate arguments and Run this command. 
@@ -58,3 +66,4 @@ node index.js
 - Insertion
 - Deletion
 - Searching
+- Sorting
