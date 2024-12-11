@@ -64,6 +64,7 @@ module.exports = {
   forEach,
   doubleArr,
   even,
+  spreadOp,
   sum,
   whileLoop,
   doWhileLoop,

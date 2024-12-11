@@ -9,6 +9,7 @@ const {
   sum,
   whileLoop,
   doWhileLoop,
+  spreadOp,
 } = require("./ArrayTriversal");
 
 const {
@@ -24,10 +25,13 @@ const {
   findAndReturnMany,
   isFound,
   checkEveryEle,
-} = require("./operations");
+  bubbleSort,
+  arrMethodSort,
+} = require("./Operations");
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 7];
-const arr2 = [ 7, 7];
+const arr2 = [7, 7];
+const unSortedArray = [3,2,4,1,7];
 
 // ------TRIVERSAL
 
@@ -64,4 +68,6 @@ const arr2 = [ 7, 7];
 // log(isFound(arr,3))
 // log(checkEveryEle(arr2,7))
 
-//triversal,insert,del,sorting,recursion,searching
+//**Sorting
+// log(bubbleSort(unSortedArray))
+// log(arrMethodSort(unSortedArray))
