@@ -33,3 +33,6 @@ class Stack {
     console.log(this.items.join(' '));
   }
 }
+
+
+export default Stack;
