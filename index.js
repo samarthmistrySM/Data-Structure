@@ -16,11 +16,51 @@ const arr = [1, 2, 3, 4, 5, 6, 7];
 
 // STACK USING CLASS
 
-const stack = new Stack();
-stack.push(10);
-stack.push(20);
-stack.push(30);
+function operators(op) {
+  if (op === '+' || op === '-') return 1;
+  if (op === '*' || op === '/') return 2;
+  return 0;
+}
+
+function infixToPostfix(){
+  const stack = new Stack();
+  let result = "";
+  let infix = '(A+B)';
+
+  for(let i=0;i<infix.length;i++){
+    let char = infix[i];
+
+    if((char <= 'z' && char >='a') || (char <= 'Z' && char >= 'A') ){
+      result += char;
+    }
+    else if(char === '(' ){
+      stack.push('(')
+    }
+    else if (char === ')') {
+      while (!stack.isEmpty() && stack.peek() !== '(') {
+        result += stack.pop();
+      }
+      stack.pop(); 
+    } 
+    else{
+      while (!stack.isEmpty() && operators(stack.peek()) >= operators(char)) {
+        result += stack.pop();
+      }
+      stack.push(char);
+    }
+  } 
+  
+  log(result)  
+  log(stack)
+}
+
+infixToPostfix()
 // console.log(stack.peek()); 
 // console.log(stack.pop()); 
 // console.log(stack.getSize());
 // stack.print(); 
+
+
+//infix to postfix
+// Input: A + B * C + D
+// Output: ABC*+D+
