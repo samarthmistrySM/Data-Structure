@@ -20,14 +20,15 @@ class Linkedlist {
     this.size++;
   }
 
-  print() {
-    let result = "";
-    let curr = this.head;
-    while (curr != null) {
-      result += curr.data + " ";
-      curr = curr.next;
+  addFirst(data) {
+    const newNode = new Node(data);
+    if (this.head === null) {
+      this.head = newNode;
+    } else {
+      const temp = this.head;
+      newNode.next = temp;
+      this.head = newNode;
     }
-    console.log(result.trim());
   }
 
   addAt(data, index) {
@@ -94,24 +95,37 @@ class Linkedlist {
     } else {
       let curr = this.head;
       let prev = null;
-      
+
       while (curr != null) {
-        if(curr.data === data){
+        if (curr.data === data) {
           prev.next = curr.next;
           this.size--;
-        }
-        else{
+        } else {
           prev = curr;
         }
-        curr = curr.next; 
+        curr = curr.next;
       }
     }
   }
 
-  contains(data){
+  removeDuplicates() {
+    let curr = this.head;
+    while (curr && curr.next) {
+      if (curr.data === curr.next.data) {
+        curr.next = curr.next.next;
+        if (curr.next) {
+          curr.next.prev = curr;
+        }
+      } else {
+        curr = curr.next;
+      }
+    }
+  }
+
+  contains(data) {
     let curr = this.head;
     while (curr != null) {
-      if(curr.data === data){
+      if (curr.data === data) {
         return true;
       }
       curr = curr.next;
@@ -119,33 +133,81 @@ class Linkedlist {
     return false;
   }
 
-  addFirst(data){
-    const newNode = new Node(data);
-    if(this.head === null){
-      this.head = newNode;
-    }else{
-      const temp = this.head;
-      newNode.next = temp;
-      this.head = newNode;
-    }
-  }
-  
-  indexOf(data){
+  indexOf(data) {
     let found = false;
     let currIndex = 0;
     let curr = this.head;
-    while(curr.data != data){
+    while (curr.data != data) {
       curr = curr.next;
       currIndex++;
-      found=true;
+      found = true;
     }
-    if(!found){
+    if (!found) {
       currIndex = -1;
     }
     return currIndex;
   }
 
+  middle() {
+    const targetIdx = Math.trunc(this.size / 2);
+    let curr = this.head;
+    for (let i = 0; i < targetIdx; i++) {
+      curr = curr.next;
+    }
+    return curr;
+  }
 
+  reverse() {
+    let curr = this.head;
+    let prev = null;
+    let next;
+
+    while (curr != null) {
+      next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    this.head = prev;
+  }
+
+  sortLinkedList() {
+    const arr = [];
+    let curr = this.head;
+    while (curr != null) {
+      arr.push(curr.data);
+      curr = curr.next;
+    }
+    arr.sort((a, b) => a - b);
+
+    const newLinkedlist = new Linkedlist();
+
+    arr.forEach((ele) => {
+      newLinkedlist.add(ele);
+    });
+
+    this.head = newLinkedlist.head;
+  }
+
+  merge(newHead) {
+    let curr = this.head;
+
+    while (curr.next != null) {
+      curr = curr.next;
+    }
+    curr.next = newHead;
+    this.sortLinkedList();
+  }
+  
+  print() {
+    let result = "";
+    let curr = this.head;
+    while (curr != null) {
+      result += curr.data + " ";
+      curr = curr.next;
+    }
+    console.log(result.trim());
+  }
 }
 
-module.exports = Linkedlist
+module.exports = Linkedlist;
