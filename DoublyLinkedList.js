@@ -73,14 +73,51 @@ class DoublyLinkedList{
         if(this.head===null){
             throw new Error("Linkedlist is empty")
         }else{
+            let prev = null;
             let curr = this.head;
             while(curr.data != data){
+                prev = curr;
                 curr=curr.next;
             }
-            
+            // curr.next.prev = curr.prev;
             curr.next.prev = curr.prev;
-            curr.prev.next = curr.next; 
+            prev.next = curr.next;
+            // curr.prev.next = curr.next; 
         }
+    }
+
+    deleteAt(index){
+        if(this.head===null){
+            throw new Error("Linkedlist is empty")
+        }else{
+            let currentIdx = 0;
+            let prev = null;
+            let curr = this.head;
+            while(currentIdx != index){
+                prev= curr;
+                curr = curr.next;
+                currentIdx++;
+            }
+            // curr.next.prev = curr.prev;
+            curr.next.prev = curr.prev;
+            prev.next = curr.next;
+            // curr.prev.next = curr.next; 
+        }
+    }
+
+    search(data){
+        let curr = this.head;
+        let found = -1;
+        let currentIdx = 0;
+        while(curr!=null){
+            if(curr.data === data){
+                found = currentIdx;
+                break;
+            }
+            curr=curr.next
+            currentIdx++;
+        }
+        return (found);
     }
 
     printForward(){

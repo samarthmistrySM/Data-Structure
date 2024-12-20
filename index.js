@@ -16,10 +16,10 @@ doublyLinkedList.addAfter(7,3)
 
 // doublyLinkedList.deleteFirst();
 // doublyLinkedList.deleteLast();
-doublyLinkedList.deleteEle(7);
-
+// doublyLinkedList.deleteEle(7);
+// log(doublyLinkedList.search(2));
+doublyLinkedList.deleteAt(3);
 doublyLinkedList.printForward()
-
 doublyLinkedList.printBackwards()
 
 // const linkedlist = new Linkedlist();
