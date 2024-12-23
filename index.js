@@ -1,6 +1,7 @@
 const { log } = require("console");
 const { isEmpty, peek, pop, printStack, push, size } = require("./Stack");
 const Stack = require("./StackUsingClass")
+const Stack2 = require("./StackLinkedList")
 const arr = [1, 2, 3, 4, 5, 6, 7];
 
 // STACK
@@ -54,7 +55,20 @@ function infixToPostfix(){
   log(stack)
 }
 
-infixToPostfix()
+
+function stackUsingLinkedList(){
+  const stack = new Stack2();
+  stack.push(1)
+  stack.push(2)
+  stack.push(3)
+  stack.push(4)
+  stack.push(5)
+
+  stack.print()
+}
+stackUsingLinkedList()
+
+// infixToPostfix()
 // console.log(stack.peek()); 
 // console.log(stack.pop()); 
 // console.log(stack.getSize());
